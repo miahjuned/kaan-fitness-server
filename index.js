@@ -27,6 +27,7 @@ client.connect(err => {
   const ReviewCollection = client.db("kaanFitness").collection("review");
   const OrderCollection = client.db("kaanFitness").collection("order");
   const loginUserCollection = client.db("kaanFitness").collection("loginUser");
+  const BlogPostCollection = client.db("kaanFitness").collection("BlogPost");
   const ServicesCollection = client.db("kaanFitness").collection("services");
 
   app.get('/allServices', (req, res) => {
@@ -69,6 +70,16 @@ client.connect(err => {
     })
   })
 
+  app.post('/addBlogPost', (req, res) => {
+    const newProduct = req.body;
+    // console.log('adding new product: ', newProduct)
+    BlogPostCollection.insertOne(newProduct)
+    .then(result => {
+      // console.log('inseart count',result.insertedCount)
+      res.send(result.insertedCount > 0)
+    })
+  })
+
 
   app.post('/order', (req, res) => {
     const newProduct = req.body;
@@ -104,6 +115,14 @@ client.connect(err => {
 
   app.get('/allReview', (req, res) => {
     ReviewCollection.find()
+    .toArray((err, items) => {
+      res.send(items)
+      // console.log('from database', items)
+    })
+  })
+
+  app.get('/allBlogPost', (req, res) => {
+    BlogPostCollection.find()
     .toArray((err, items) => {
       res.send(items)
       // console.log('from database', items)
