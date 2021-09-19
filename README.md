@@ -1,7 +1,8 @@
 # Welcome to Kaan Fitness Club
 
-Kaan Fitness Club  [Live](https://kaan-fitness.web.app/) website.
+Kaan Fitness Club  [Live](https://kaan-fitness.web.app/) website and 
 client-side code [repository](https://github.com/zunead/kaan-fitness) Link.
+
 ## Available Section
 
 In the Kaan Fitness Club website home section, you can see:
